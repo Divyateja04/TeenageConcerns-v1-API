@@ -22,3 +22,10 @@ services:
     ports:
       - "5432:5432"
     
+  chat-server:
+    container_name: chat-server
+    build: ./
+    command: node chat.js
+    ports:
+      - "8080:8080"
+    
