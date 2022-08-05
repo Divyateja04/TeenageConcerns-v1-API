@@ -4,7 +4,7 @@ CREATE TABLE volunteers (
     email TEXT UNIQUE NOT NULL,
     password TEXT,
     users JSON[],
-    completedusers INTEGER,
-    userslen INTEGER
+    completedusers INTEGER DEFAULT 0,
+    userslen INTEGER DEFAULT 0
 );
 COMMIT;
