@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  teenageconcerns-api:
+    container_name: server
+    build: ./
+    command: node server.js
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/teenageconcerns-api
+    environment:
+      - DB_URI=postgres://postgres:postgres@postgres:5432/teenageconcerns
+  
+  postgres:
+    build: ./postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=teenageconcerns
+    ports:
+      - "5432:5432"
+    

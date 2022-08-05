@@ -12,16 +12,27 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-const db= knex({
+// const db= knex({
+//     client: 'pg',
+//     connection: {
+//       host : '127.0.0.1', //localhost
+//       user : 'postgres', //add your user name for the database here
+//       port: 5432, // add your port number here
+//       password : 'admin', //add your correct password in here
+//       database : 'teenageconcerns' //add your database name you created here
+//     }
+// });
+
+const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1', //localhost
-      user : 'postgres', //add your user name for the database here
-      port: 5432, // add your port number here
-      password : 'admin', //add your correct password in here
-      database : 'teenageconcerns' //add your database name you created here
+      connectionString : process.env.DB_URI,
+      ssl: false
+      // {
+      //   rejectUnauthorized: false
+      // },
     }
-});
+  });
 
 app.use(express.json());
 app.use(cors());
